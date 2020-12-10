@@ -264,29 +264,29 @@ int main(int argc, char **argv){
 		struct sprite* spr;
 		for(int i=0;i < MAX_SPRITES;++i) {
 			spr = &(sprites[i]);
-			spr->x += spr->vx;
-			if(spr->x < 0) {
-				spr->x = 0;
-				spr->vx *= -1;
-			}
-			if(spr->x > WORLD_WIDTH - targetRect.w) {
-				spr->x = (float) (WORLD_WIDTH - targetRect.w);
-				spr->vx *= -1;
-			}
-			spr->y += spr->vy;
-			if(spr->y < 0) {
-				spr->y = 0;
-				spr->vy *= -1;
-			}
-			if(spr->y > WORLD_HEIGHT - targetRect.h) {
-				spr->y = (float) (WORLD_HEIGHT - targetRect.h);
-				spr->vy *= -1;
-			}
+			// spr->x += spr->vx;
+			//if(spr->x < 0) {
+			//	spr->x = 0;
+			//	spr->vx *= -1;
+			//}
+			//if(spr->x > WORLD_WIDTH - targetRect.w) {
+			//	spr->x = (float) (WORLD_WIDTH - targetRect.w);
+			//	spr->vx *= -1;
+			//}
+			//spr->y += spr->vy;
+			//if(spr->y < 0) {
+			//	spr->y = 0;
+			//	spr->vy *= -1;
+			//}
+			//if(spr->y > WORLD_HEIGHT - targetRect.h) {
+			//	spr->y = (float) (WORLD_HEIGHT - targetRect.h);
+			//	spr->vy *= -1;
+			//}
 			
 			targetRect.x = (int)spr->x;
 			targetRect.y = (int)spr->y;
 
-			SDL_RenderCopy(renderer, bmpTex, NULL, &targetRect);
+			SDL_RenderCopyEx(renderer, bmpTex, NULL, &targetRect, 180, NULL, SDL_FLIP_NONE);
 		}
 
 		presentBackBuffer(renderer, win, texTarget, programId);
